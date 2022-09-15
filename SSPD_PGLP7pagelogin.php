@@ -20,24 +20,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     $result = $conn->query($sql);
     $user = $result->fetch_assoc();
 
-    $count = mysqli_num_rows($result);
+    // $count = mysqli_num_rows($result);
 
-    if ($count == 1) {
+    // if ($count == 1) {
 
-        if (password_verify($passcode, $user["passcode"])) 
-        {
+    //     if (password_verify($passcode, $user["passcode"])) 
+    //     {
 
-            session_start();
-            session_regenerate_id();
-            $_SESSION["user_id"] = $user["id"];
+    //         session_start();
+    //         session_regenerate_id();
+    //         $_SESSION["user_id"] = $user["id"];
 
-            header("Location: http://darinfraestructura.com".$formMain); 
-            exit;
-        }
+    //         header("Location: http://darinfraestructura.com".$formMain); 
+    //         exit;
+    //     }
         
-    }
+    // }
     
-    $is_invalid = true;
+    // $is_invalid = true;
 
 }
 

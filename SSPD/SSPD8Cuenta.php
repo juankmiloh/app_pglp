@@ -54,7 +54,7 @@ if ($uploadOk != 0)
 }
 
 // Redirect to the page
-header("Location: http://darinfraestructura.com".$formcuenta.$qstring);
+header("Location: http://localhost".$formcuenta.$qstring);
 
 
 
