@@ -16,7 +16,7 @@ if(!empty($_GET['status']))
             echo '<script type="text/javascript">alert("Los datos han sido cargados exitosamente.")</script>';
             break;
         case 'err':
-            echo '<script type="text/javascript">alert("Sucedi贸 un problema por favor intente de nuevo.")</script>';            
+            echo '<script type="text/javascript">alert("Sucedio un problema por favor intente de nuevo.")</script>';            
             break;
         case 'pass':
              echo '<script type="text/javascript">alert("Passwords deben coincidir")</script>';             

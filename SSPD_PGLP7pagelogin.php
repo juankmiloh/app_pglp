@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     //         session_regenerate_id();
     //         $_SESSION["user_id"] = $user["id"];
 
-    //         header("Location: http://darinfraestructura.com".$formMain); 
+    //         header("Location: http://localhost/app_pglp".$formMain); 
     //         exit;
     //     }
         

@@ -3,7 +3,7 @@
 session_start();
 
 $formFiles = "/SSPD_PGLP8page3.php";
-$salir = "http://darinfraestructura.com/SSPD/SSPD8logout.php";
+$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 $target_dirAire = "Archivos/Aire/";
 $target_dirAfinia = "Archivos/Afinia/";
@@ -13,7 +13,7 @@ if (isset($_SESSION["user_id"])) {
 }
 else
 {
-    header("Location: http://darinfraestructura.com".$login); 
+    header("Location: http://localhost/app_pglp".$login); 
     exit;
 }
 
@@ -96,6 +96,6 @@ if ($uploadOk != 0)
 $msg = $qstring."&id_indicador=".$id_indicador;
 
 // Redirect to the page
-header("Location: http://darinfraestructura.com".$formFiles.$msg);
+header("Location: http://localhost/app_pglp".$formFiles.$msg);
 
 ?>

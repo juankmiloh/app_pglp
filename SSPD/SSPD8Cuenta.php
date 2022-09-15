@@ -54,7 +54,7 @@ if ($uploadOk != 0)
 }
 
 // Redirect to the page
-header("Location: http://localhost".$formcuenta.$qstring);
+header("Location: http://localhost/app_pglp".$formcuenta.$qstring);
 
 
 
