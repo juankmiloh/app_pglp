@@ -13,7 +13,7 @@ if (isset($_SESSION["user_id"])) {
 }
 else
 {
-    header("Location: http://localhost/app_pglp".$login); 
+    header("Location: http://localhost/app_pglp".$login);
     exit;
 }
 
@@ -43,7 +43,7 @@ $id_archivo = $_POST["id_archivo"];
 $nombre = $_FILES["fileToUpload"]["name"];
 $observaciones = $_POST["observaciones"];
 
-$archivo = "https://darinfraestructura.com/SSPD/".$target_file;
+$archivo = "http://localhost/app_pglp/SSPD/".$target_file;
 
 // Toma fecha
 date_default_timezone_set('America/Bogota'); // Fija hora zona local

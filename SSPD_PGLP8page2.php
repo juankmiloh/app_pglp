@@ -2,9 +2,9 @@
 
 session_start();
 
-$formMain = "/SSPD_PGLP8page1.php";
+$formMain = "/app_pglp/SSPD_PGLP8page1.php";
 $uploadData = "SSPD/SSPD8UploadPGLP.php";
-$salir = "https://darinfraestructura.com/SSPD/SSPD8logout.php";
+$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
@@ -12,7 +12,7 @@ if (isset($_SESSION["user_id"])) {
 }
 else
 {
-    header("Location: https://darinfraestructura.com".$login); 
+    header("Location: http://localhost/app_pglp".$login); 
     exit;
 }
 

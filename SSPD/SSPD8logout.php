@@ -4,7 +4,7 @@ session_start();
 
 session_destroy();
 
-header("Location: https://darinfraestructura.com/SSPD_PGLP8pagelogin.php");
+header("Location: http://localhost/app_pglp/SSPD_PGLP8pagelogin.php");
 
 exit;
 
