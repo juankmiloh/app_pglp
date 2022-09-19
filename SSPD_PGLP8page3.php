@@ -4,7 +4,7 @@
 session_start();
 
 $formMain = "/app_pglp/SSPD_PGLP8page1.php";
-$formUpFiles = "/SSPD/SSPD8UploadfilePGLP.php";
+$formUpFiles = "/app_pglp/SSPD/SSPD8UploadfilePGLP.php";
 $salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 
