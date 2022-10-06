@@ -71,9 +71,23 @@ $password1 = $row2["passcode"];
 
 
 <!DOCTYPE html>
-<html lang="en-US" class="no-js">
+<html lang="es">
+
 <head>
-	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Login PGLP</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 
    
@@ -109,11 +123,7 @@ $password1 = $row2["passcode"];
             </div>
        
             <div class="sm-span12 smue-clmn sme-dsbl-margin-left sme-dsbl-margin-right">   
-                        
-                <p>&nbsp;</p>    
-                
-                <br><br>
-                
+                                        
                 <?php
                 $sql2 = "SELECT * FROM indicadores WHERE id = '".$indicador."'";
                 $result2 = mysqli_query($conn,$sql2);
@@ -124,7 +134,7 @@ $password1 = $row2["passcode"];
                 $result3 = mysqli_query($conn,$sql3);
                 $row3 = mysqli_fetch_array($result3);
                 
-                echo "<h5><b>Objetivo: ".$row3["nombre"]."</b></h5><br></br>";
+                echo "<h5><b>Objetivo: ".$row3["nombre"]."</b></h5><br>";
                 echo "<h6><b>Indicador ".$row2["tipo"].": ".$row2["nombre"]."</b></h6>";
                 ?>
     
@@ -137,7 +147,7 @@ $password1 = $row2["passcode"];
     
                     <form  action = '<?php echo $formUpFiles; ?>' method='post' enctype='multipart/form-data' onSubmit="return confirm('¿Esta seguro de cargar el archivo?');">
                         Archivo:
-                        <input type='file' name='fileToUpload' id='fileToUpload'>
+                        <input type='file' name='fileToUpload' id='fileToUpload' class="form-control">
                         <input type='hidden' id='indicador_' name='id_indicador' value=<?php echo $indicador; ?> >
                         <input type='hidden' id='year_' name='year_ind' value=<?php echo $year_ind; ?> >
                         <input type='hidden' id='trim_' name='trim_ind' value=<?php echo $trim_ind; ?>>
@@ -154,7 +164,7 @@ $password1 = $row2["passcode"];
                             <?php
                                     $sql1 = "SELECT * FROM archivos_soporte WHERE id_indicador = '".$indicador."'";
                                     $result1 = mysqli_query($conn,$sql1);
-                                    echo "<label for='nombre'>Tema:</label><select id='nombre' name='id_archivo'>";
+                                    echo "<label for='nombre'>Tema:</label><select id='nombre' name='id_archivo' class='form-control'>";
                                     $n=1;
                                     if ($result1->num_rows > 0) 
                                     {
@@ -176,12 +186,12 @@ $password1 = $row2["passcode"];
                             Observaciones de la empresa:
                             </label>
                             <br><br>
-                            <textarea  name = "observaciones" >Escriba sus observaciones sobre el contenido del archivo
+                            <textarea  name = "observaciones" class="form-control">Escriba sus observaciones sobre el contenido del archivo
                             </textarea>
                         </div>  
                         
                         <br>
-                        <input type='submit' name='submit'>
+                        <button type='submit' class='btn btn-warning' style='color: white;' name='submit'>Enviar</button>
                     </form>
                     
                 </div>
@@ -194,7 +204,7 @@ $password1 = $row2["passcode"];
                 <?php
                 $sql1 = "SELECT * FROM archivos_soporte WHERE id_indicador = '".$indicador."' ORDER BY id ASC";
                 $result1 = mysqli_query($conn,$sql1);
-                echo "<label for='nombre'>Tema:</label><select name='seleccion' id='seleccion' onchange='descripcion()'><option value='0'></option>";
+                echo "<label for='nombre'>Tema:</label><select name='seleccion' id='seleccion' onchange='descripcion()' class='form-control'><option value='0'></option>";
                 $n=1;
                 if ($result1->num_rows > 0) 
                 {
@@ -227,7 +237,7 @@ $password1 = $row2["passcode"];
                     <?php
                     $sql = "SELECT * FROM rep_archivos WHERE id_indicador = '".$indicador."' AND trim_ind = '".$trim_ind."' AND year_ind = '".$year_ind."' ORDER BY id ASC";
                     $result = mysqli_query($conn,$sql);
-                    echo "<table><tr><th><br>Archivos soporte cargados:</th><th></th><th></th></tr>";
+                    echo "<table class='table table-striped'><tr><th>Archivos soporte cargados:</th><th></th><th></th></tr>";
                     $n=1;
                     if ($result->num_rows > 0) 
                     {
@@ -248,8 +258,8 @@ $password1 = $row2["passcode"];
                 
             <div>
                 
-            <form class="mpce-cfa-form  contact_form2 smue-form-5" method = "post" action="<?php echo $formMain; ?>">
-                <input type="submit" name="addData1" value="Regresar" style="float: right;">
+            <form style="text-align: right;" class="mpce-cfa-form  contact_form2 smue-form-5" method = "post" action="<?php echo $formMain; ?>">
+                <button type="submit" class="btn" style='background-color:#190968; color:white'>Regresar</button>
             </form>
             
         </div>

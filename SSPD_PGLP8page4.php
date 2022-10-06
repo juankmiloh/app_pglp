@@ -37,10 +37,25 @@ $indicador = $_POST["id_indicador"];
 
 
 <!DOCTYPE html>
-<html lang="en-US" class="no-js">
+<html lang="es">
+
 <head>
-	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Login PGLP</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
+
 
    
 <body bgcolor = "#FFFFFF">
@@ -75,15 +90,15 @@ $indicador = $_POST["id_indicador"];
                 $result3 = mysqli_query($conn,$sql3);
                 $row3 = mysqli_fetch_array($result3);
                 
-                echo "<h5><b>Empresa: ".$agente."</b></h5><br></br>";
-                echo "<h5><b>Objetivo: ".$row3["nombre"]."</b></h5><br></br>";
-                echo "<h6><b>Indicador ".$row2["tipo"].": ".$row2["nombre"]."</b><br><br></h6>";
+                echo "<h5><b>Empresa: ".$agente."</b></h5><br>";
+                echo "<h5><b>Objetivo: ".$row3["nombre"]."</b></h5><br>";
+                echo "<h6><b>Indicador ".$row2["tipo"].": ".$row2["nombre"]."</b><br></h6>";
                 echo "<h6><b>Periodo: ".$year_ind."</b></h6><br>";
-                echo "<h6><b>Trimestre: ".$trim_ind."</b></h6><br><br>";
+                echo "<h6><b>Trimestre: ".$trim_ind."</b></h6>";
                 ?>
 
                 
-                <br><br>
+                <br>
                 
                 
                 <!-- tabla datos basicos-->
@@ -106,7 +121,7 @@ $indicador = $_POST["id_indicador"];
                 // Variables
                 $sql = "SELECT * FROM variables WHERE id_indicador = '".$indicador."' ORDER BY id ASC";
                 $result = mysqli_query($conn,$sql);
-                echo "<table><tr><th><br>Variables del indicador</th><th></th><th></th></tr>";
+                echo "<table class='table table-striped'><tr><th><br>Variables del indicador</th><th></th><th></th></tr>";
                 $n=1;
                 if ($result->num_rows > 0) 
                 {
@@ -127,7 +142,7 @@ $indicador = $_POST["id_indicador"];
 
 
                 // Otros datos
-                echo "<table>
+                echo "<table class='table table-striped'>
                     <tr>
                     <th><br>Concepto</th>
                     <th><br>Informacion reportada</th>
@@ -160,7 +175,7 @@ $indicador = $_POST["id_indicador"];
                 <?php
                 $sql = "SELECT * FROM rep_soportes WHERE id_rep_indicadores = '".$id_rep_ind ."' AND tipo_soporte = '2' ORDER BY id ASC";
                 $result = mysqli_query($conn,$sql);
-                echo "<table><tr><th><br>Acciones</th><th></th></tr>";
+                echo "<table class='table table-striped'><tr><th><br>Acciones</th><th></th></tr>";
                 $n=1;
                 if ($result->num_rows > 0) 
                 {
@@ -178,7 +193,7 @@ $indicador = $_POST["id_indicador"];
                 <?php
                 $sql = "SELECT * FROM rep_soportes WHERE id_rep_indicadores = '".$id_rep_ind ."' AND tipo_soporte = '1' ORDER BY id ASC";
                 $result = mysqli_query($conn,$sql);
-                echo "<table><tr><th><br>Beneficios</th><th></th></tr>";
+                echo "<table class='table table-striped'><tr><th><br>Beneficios</th><th></th></tr>";
                 $n=1;
                 if ($result->num_rows > 0) 
                 {
@@ -196,7 +211,7 @@ $indicador = $_POST["id_indicador"];
                 <?php
                 $sql = "SELECT * FROM rep_soportes WHERE id_rep_indicadores = '".$id_rep_ind ."' AND tipo_soporte = '3' ORDER BY id ASC";
                 $result = mysqli_query($conn,$sql);
-                echo "<table><tr><th><br>Dificultades</th><th></th></tr>";
+                echo "<table class='table table-striped'><tr><th><br>Dificultades</th><th></th></tr>";
                 $n=1;
                 if ($result->num_rows > 0) 
                 {
@@ -214,7 +229,7 @@ $indicador = $_POST["id_indicador"];
                 <?php
                 $sql = "SELECT * FROM rep_archivos WHERE id_indicador = '".$indicador."' AND trim_ind = '".$trim_ind."' AND year_ind = '".$year_ind."' ORDER BY id ASC";
                 $result = mysqli_query($conn,$sql);
-                echo "<table><tr><th><br>Archivos soporte</th><th></th></tr>";
+                echo "<table class='table table-striped'><tr><th><br>Archivos soporte</th><th></th></tr>";
                 $n=1;
                 if ($result->num_rows > 0) 
                 {
@@ -230,16 +245,16 @@ $indicador = $_POST["id_indicador"];
 
             <div>
                 
-                <button onclick="window.print()" style="background-color:#190968; border-color:blue; color:white">Imprimir</button>
+                <button onclick="window.print()" class="btn btn-warning btn-lg" style="color:white">Imprimir</button>
 
-                <form class="mpce-cfa-form  contact_form2 smue-form-5" method = "post" action="<?php echo $formMain; ?>">
+                <form style="text-align: right;" class="mpce-cfa-form  contact_form2 smue-form-5" method = "post" action="<?php echo $formMain; ?>">
 
                    <input type='hidden' name='agente' value='<?php echo $agente; ?>'>  
                    <input type='hidden' name='password' value='<?php echo $password1; ?>'>                       
                    <input type='hidden' name='year_ind' value='<?php echo $year_ind; ?>'>
                    <input type='hidden' name='trim_ind' value='<?php echo $trim_ind; ?>'>   
                    
-                    <input type="submit" name="addData1" value="Regresar" style="float: right;">
+                   <button type="submit" class="btn" style='background-color:#190968; color:white'>Regresar</button>
                 </form>
             
             </div>

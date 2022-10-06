@@ -16,12 +16,6 @@ CREATE TABLE `pglp_db`.`objetivos` (
     `motivantes` VARCHAR(10000) NULL
 ) ENGINE = InnoDB;
 
-INSERT INTO `objetivos` (`id`, `agente`, `nombre`, `motivantes`)
-VALUES ('Air-e.1', 'Air-e', 'Continuidad del servicio en el SDL', '1. Incumplimiento por parte del anterior operador');
-
-INSERT INTO `objetivos` (`id`, `agente`, `nombre`, `motivantes`)
-VALUES ('Air-e.2', 'Air-e', 'Confiabilidad en el STR', '1. Existen activos del operador en el STR que han');
-
 CREATE TABLE `pglp_db`.`indicadores` (
     `id` VARCHAR(50) NOT NULL,
     `agente` VARCHAR(50) NULL,
@@ -30,18 +24,6 @@ CREATE TABLE `pglp_db`.`indicadores` (
     `frecuencia` INT NULL,
     `nombre` VARCHAR(1000) NULL
 ) ENGINE = InnoDB;
-
-INSERT INTO `indicadores` (`id`, `agente`, `tipo`, `id_objetivo`, `frecuencia`, `nombre`)
-VALUES ('Air-e.1.1.P', 'Air-e', 'Parcial', 'Air-e.1', '1', 'Ejecución de inversiones orientadas a la calidad del servicio aprobadas en el plan de inversión.');
-
-INSERT INTO `indicadores` (`id`, `agente`, `tipo`, `id_objetivo`, `frecuencia`, `nombre`)
-VALUES ('Air-e.1.2.P', 'Air-e', 'Parcial', 'Air-e.1', '1', 'Cumplimiento del programa de mantenimientos por circuito.');
-
-INSERT INTO `indicadores` (`id`, `agente`, `tipo`, `id_objetivo`, `frecuencia`, `nombre`)
-VALUES ('Air-e.2.1.P', 'Air-e', 'Parcial', 'Air-e.2', '1', 'Ejecución de inversiones orientadas a la calidad del servicio en el STR aprobadas en el plan de inversión');
-
-INSERT INTO `indicadores` (`id`, `agente`, `tipo`, `id_objetivo`, `frecuencia`, `nombre`)
-VALUES ('Air-e.2.2.P', 'Air-e', 'Parcial', 'Air-e.2', '1', 'Cumplimiento del programa de mantenimientos por activo');
 
 CREATE TABLE `pglp_db`.`rep_indicadores` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -78,33 +60,6 @@ REATE TABLE `pglp_db`.`variables` (
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.1.1.P', 'VUC_Ejecutadot', 'Valor de las unidades ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.1.1.P', 'VUC_Programadot', 'Valor de las unidades ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.1.2.P', 'Ejecución Real t', 'Actividades ejecutadas ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.1.2.P', 'Ejecución Programada t', 'Actividades programadas ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.1.2.P', '%Pond t', 'Porcentaje de ponderación ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.2.1.P', 'VUC_ejecutado t', 'Valor de las unidades ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.2.1.P', 'VUC_programado t', 'Valor de las unidades ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.2.2.P', 'Cant. Mtto Real t', 'Cantidad de mantenimientos ...');
-
-INSERT INTO `variables` (`id`, `id_indicador`, `variable`, `descripcion`) 
-VALUES (NULL, 'Air-e.2.2.P', 'Cant Mtto Programado t', 'Cantidad de mantenimientos ...');
-
 CREATE TABLE `pglp_db`.`rep_archivos` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `reg_date` DATETIME NULL,
@@ -128,5 +83,11 @@ CREATE TABLE `pglp_db`.`archivos_soporte` (
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
-INSERT INTO `archivos_soporte` (`id`, `id_indicador`, `n_corto`, `descripcion`, `exigencia`)
-VALUES (NULL, 'Air-e.1.1.P', 'Curva S', 'Curva S de ejecución...', 'Obligatorio');
+CREATE TABLE `pglp_db`.`fecha_cargue` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_agente` VARCHAR(255) DEFAULT NULL,
+  `trim_ind` INT NULL,
+  `year_ind` INT NULL,
+  `fecha_limite` DATETIME NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
