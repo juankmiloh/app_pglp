@@ -1,9 +1,9 @@
 <?php
- 
+require_once "SSPD/constantes.php";
 session_start();
 
 $formMain = "/SSPD_PGLP8page1.php";
-$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
+$salir = HOST . "SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
@@ -11,7 +11,7 @@ if (isset($_SESSION["user_id"])) {
 }
 else
 {
-    header("Location: http://localhost/app_pglp".$login); 
+    header("Location: " . HOST . $login); 
     exit;
 } 
 
@@ -83,9 +83,4 @@ if (isset($_POST["addData"]))
     
 }
 
-// Redirect to page
-
-
-header("Location: http://localhost/app_pglp".$formMain.$qstring);
- 
-?>
+header("Location: " . HOST . $formMain.$qstring);

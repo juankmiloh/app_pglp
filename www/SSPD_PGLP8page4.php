@@ -1,10 +1,10 @@
 <?php
-
+require_once "SSPD/constantes.php";
 
 session_start();
 
-$formMain = "/app_pglp/SSPD_PGLP8page1.php";
-$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
+$formMain = "/SSPD_PGLP8page1.php";
+$salir = HOST . "SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
@@ -12,7 +12,7 @@ if (isset($_SESSION["user_id"])) {
 }
 else
 {
-    header("Location: http://localhost/app_pglp".$login); 
+    header("Location: " . HOST . $login); 
     exit;
 }
 

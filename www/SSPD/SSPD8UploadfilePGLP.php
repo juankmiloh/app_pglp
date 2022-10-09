@@ -1,9 +1,10 @@
 <?php 
+require_once "SSPD/constantes.php";
 
 session_start();
 
 $formFiles = "/SSPD_PGLP8page3.php";
-$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
+$salir = "SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 $target_dirAire = "Archivos/Aire/";
 $target_dirAfinia = "Archivos/Afinia/";
@@ -13,7 +14,7 @@ if (isset($_SESSION["user_id"])) {
 }
 else
 {
-    header("Location: http://localhost/app_pglp".$login);
+    header("Location: " . HOST . $login);
     exit;
 }
 
@@ -43,7 +44,7 @@ $id_archivo = $_POST["id_archivo"];
 $nombre = $_FILES["fileToUpload"]["name"];
 $observaciones = $_POST["observaciones"];
 
-$archivo = "http://localhost/app_pglp/SSPD/".$target_file;
+$archivo = HOST . "SSPD/" . $target_file;
 
 // Toma fecha
 date_default_timezone_set('America/Bogota'); // Fija hora zona local
@@ -96,6 +97,6 @@ if ($uploadOk != 0)
 $msg = $qstring."&id_indicador=".$id_indicador;
 
 // Redirect to the page
-header("Location: http://localhost/app_pglp".$formFiles.$msg);
+header("Location: " . HOSt . $formFiles.$msg);
 
 ?>

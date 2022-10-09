@@ -1,17 +1,18 @@
 <?php
+require_once "SSPD/constantes.php";
 
 session_start();
 
-$formInd = "/app_pglp/SSPD_PGLP8page2.php"; //Formulario cargue datos indicador
-$formFiles = "/app_pglp/SSPD_PGLP8page3.php"; //Formulario cargue archivos
-$formPrint = "/app_pglp/SSPD_PGLP8page4.php"; //Formulario cargue datos indicador
-$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
+$formInd = "/SSPD_PGLP8page2.php"; //Formulario cargue datos indicador
+$formFiles = "/SSPD_PGLP8page3.php"; //Formulario cargue archivos
+$formPrint = "/SSPD_PGLP8page4.php"; //Formulario cargue datos indicador
+$salir = HOST . "SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
     $idusuario = $_SESSION["user_id"];
 } else {
-    header("Location: http://localhost/app_pglp" . $login);
+    header("Location: " . HOST . $login);
     exit;
 }
 
@@ -46,13 +47,7 @@ if (!empty($_GET['status'])) {
             break;
     }
 }
-
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -73,7 +68,6 @@ if (!empty($_GET['status'])) {
         }
     </style>
 </head>
-
 
 <body bgcolor="#FFFFFF">
 

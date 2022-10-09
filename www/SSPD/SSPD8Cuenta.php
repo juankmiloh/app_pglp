@@ -1,4 +1,5 @@
 <?php
+require_once "SSPD/constantes.php";
 
 $usuario = $_POST['usuario'];
 $agente = $_POST['agente'];
@@ -54,8 +55,4 @@ if ($uploadOk != 0)
 }
 
 // Redirect to the page
-header("Location: http://localhost/app_pglp".$formcuenta.$qstring);
-
-
-
-?>
+header("Location: " . HOST . $formcuenta.$qstring);

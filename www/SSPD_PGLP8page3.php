@@ -1,11 +1,11 @@
 <?php
-
+require_once "SSPD/constantes.php";
 
 session_start();
 
-$formMain = "/app_pglp/SSPD_PGLP8page1.php";
-$formUpFiles = "/app_pglp/SSPD/SSPD8UploadfilePGLP.php";
-$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
+$formMain = "/SSPD_PGLP8page1.php";
+$formUpFiles = "/SSPD/SSPD8UploadfilePGLP.php";
+$salir = HOST . "SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
@@ -13,7 +13,7 @@ if (isset($_SESSION["user_id"])) {
 }
 else
 {
-    header("Location: http://localhost/app_pglp".$login); 
+    header("Location: " . HOST . $login); 
     exit;
 }
 
@@ -54,21 +54,16 @@ if(!empty($_GET['status']))
     }
 }
 
-
 $sql2 = "SELECT * FROM indicadores WHERE id = '".$indicador."'";
 $result2 = mysqli_query($conn,$sql2);
 $row2 = mysqli_fetch_array($result2);
 $agente = $row2["agente"];
 
-$sql2 = "SELECT * FROM usuarios WHERE username = '".$agente."'";
+$sql2 = "SELECT * FROM usuarios WHERE id_agente = '".$agente."'";
 $result2 = mysqli_query($conn,$sql2);
 $row2 = mysqli_fetch_array($result2);
 $password1 = $row2["passcode"];
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="es">

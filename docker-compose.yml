@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: pglp_db
+      MYSQL_PASSWORD: yLHz1ahKMKlF5MvUmgwJpwy7wNhR1Ku6i5zo1IVZg6vFvoZTlM
+      MYSQL_ROOT_PASSWORD: yLHz1ahKMKlF5MvUmgwJpwy7wNhR1Ku6i5zo1IVZg6vFvoZTlM
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./conf:/etc/mysql/conf.d
+      - persistent:/var/lib/mysql
+    networks:
+      - default
+
+  www:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+    links:
+      - db
+    networks:
+      - default
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db:db
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: yLHz1ahKMKlF5MvUmgwJpwy7wNhR1Ku6i5zo1IVZg6vFvoZTlM
+      MYSQL_ROOT_PASSWORD: yLHz1ahKMKlF5MvUmgwJpwy7wNhR1Ku6i5zo1IVZg6vFvoZTlM
+
+volumes:
+  persistent:

@@ -1,16 +1,17 @@
 <?php
+require_once "SSPD/constantes.php";
 
 session_start();
 
-$formMain = "/app_pglp/SSPD_PGLP8page1.php";
+$formMain = "/SSPD_PGLP8page1.php";
 $uploadData = "SSPD/SSPD8UploadPGLP.php";
-$salir = "http://localhost/app_pglp/SSPD/SSPD8logout.php";
+$salir = HOST . "SSPD/SSPD8logout.php";
 $login = "/SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
     $idusuario = $_SESSION["user_id"];
 } else {
-    header("Location: http://localhost/app_pglp" . $login);
+    header("Location: " . HOST . $login);
     exit;
 }
 
@@ -42,7 +43,7 @@ if ($result->num_rows > 0) {
     $row = mysqli_fetch_array($result);
     $idcargado = $row["Resultado"];
 } else {
-    $sql = "INSERT INTO rep_indicadores (reg_date,trim_ind,year_ind,id_indicador,id_usuario) VALUES ('" . $Fecha . "','" . $trim_ind . "','" . $year_ind . "','" . $id_indicador . "','" . $idusuario . "')";
+    $sql = "INSERT INTO rep_indicadores (reg_date,trim_ind,year_ind,id_indicador,id_usuario) VALUES ('" . $Fecha . "','" . $trim_ind . "','" . $year_ind . "','" . $_POST["id_indicador"] . "','" . $idusuario . "')";
     mysqli_query($conn, $sql);
     $idcargado = mysqli_insert_id($conn);
 }
