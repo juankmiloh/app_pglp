@@ -3,6 +3,10 @@ require_once "SSPD/ConfigSSPD.php";
 require_once "SSPD/constantes.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    if(!array_key_exists("gtjwt", $_GET)){
+        echo "<script>window.close();</script>";
+    }
+    
     header('Content-Type: application/json'); // Specify the type of data
     $ch = curl_init(URL_GESTOR . 'autenticacion/validarJwt'); // Initialise cURL
     $authorization = "Authorization: Bearer " . $_GET['gtjwt']; // Prepare the authorisation token

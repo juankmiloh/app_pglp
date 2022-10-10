@@ -3,10 +3,10 @@ require_once "SSPD/constantes.php";
 
 session_start();
 
-$formMain = "/SSPD_PGLP8page1.php";
-$formUpFiles = "/SSPD/SSPD8UploadfilePGLP.php";
+$formMain = HOST . "SSPD_PGLP8page1.php";
+$formUpFiles = HOST . "SSPD/SSPD8UploadfilePGLP.php";
 $salir = HOST . "SSPD/SSPD8logout.php";
-$login = "/SSPD_PGLP8pagelogin.php";
+$login = HOST . "SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
     $idusuario = $_SESSION["user_id"];

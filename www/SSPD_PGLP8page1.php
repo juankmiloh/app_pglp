@@ -3,11 +3,11 @@ require_once "SSPD/constantes.php";
 
 session_start();
 
-$formInd = "/SSPD_PGLP8page2.php"; //Formulario cargue datos indicador
-$formFiles = "/SSPD_PGLP8page3.php"; //Formulario cargue archivos
-$formPrint = "/SSPD_PGLP8page4.php"; //Formulario cargue datos indicador
+$formInd = HOST . "SSPD_PGLP8page2.php"; //Formulario cargue datos indicador
+$formFiles = HOST . "SSPD_PGLP8page3.php"; //Formulario cargue archivos
+$formPrint = HOST . "SSPD_PGLP8page4.php"; //Formulario cargue datos indicador
 $salir = HOST . "SSPD/SSPD8logout.php";
-$login = "/SSPD_PGLP8pagelogin.php";
+$login = HOST ."SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
     $idusuario = $_SESSION["user_id"];

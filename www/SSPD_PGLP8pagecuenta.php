@@ -1,7 +1,7 @@
 <?php
 
 
-$cargacuenta = "SSPD/SSPD8Cuenta.php";
+$cargacuenta = HOST . "SSPD/SSPD8Cuenta.php";
 
 require_once "SSPD/ConfigSSPD.php";
 

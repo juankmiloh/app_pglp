@@ -1,12 +1,13 @@
 <?php
 require_once "SSPD/constantes.php";
+require_once "SSPD/ConfigSSPD.php";
 
 session_start();
 
-$formMain = "/SSPD_PGLP8page1.php";
-$uploadData = "SSPD/SSPD8UploadPGLP.php";
+$formMain = HOST . "SSPD_PGLP8page1.php";
+$uploadData = HOST . "SSPD/SSPD8UploadPGLP.php";
 $salir = HOST . "SSPD/SSPD8logout.php";
-$login = "/SSPD_PGLP8pagelogin.php";
+$login = HOST . "SSPD_PGLP8pagelogin.php";
 
 if (isset($_SESSION["user_id"])) {
     $idusuario = $_SESSION["user_id"];
@@ -15,10 +16,7 @@ if (isset($_SESSION["user_id"])) {
     exit;
 }
 
-require_once "SSPD/ConfigSSPD.php";
-
 $conn->set_charset("utf8"); // change character set to utf8
-
 
 $sql = "SELECT * FROM usuarios WHERE id = '" . $idusuario . "'";
 $result = mysqli_query($conn, $sql);
@@ -28,9 +26,7 @@ $agente = $row['id_agente'];
 $year_ind = $row['year_ind'];
 $trim_ind = $row['trim_ind'];
 
-
 $indicador = $_POST["id_indicador"];
-
 
 // Toma fecha
 date_default_timezone_set('America/Bogota'); // Fija hora zona local
@@ -47,9 +43,6 @@ if ($result->num_rows > 0) {
     mysqli_query($conn, $sql);
     $idcargado = mysqli_insert_id($conn);
 }
-
-
-
 ?>
 
 
